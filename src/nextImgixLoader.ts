@@ -6,10 +6,14 @@ const defaultImgixParams: SharedImigixAndSourceProps['imgixParams'] = {
   fit: 'max',
 };
 
+type Options = {
+  shopify?: boolean;
+};
+
 export function imgixLoader(
   loaderProps: ImageLoaderProps,
   imgixParams?: Omit<NonNullable<SharedImigixAndSourceProps['imgixParams']>, 'q' | 'w'>,
-  imgixOptions?: SharedImigixAndSourceProps,
+  options?: Options,
 ): string {
   if (process.env.NODE_ENV !== 'production') {
     const missingValues = [];
@@ -51,5 +55,10 @@ export function imgixLoader(
     };
   }
 
-  return buildURL(loaderProps.src, adjustedImgixParams, imgixOptions);
+  let src = loaderProps.src;
+
+  if (options && options.shopify && process.env.NEXT_PUBLIC_SHOPIFY_IMGIX_URL)
+    src = src.replace('cdn.shopify.com', process.env.NEXT_PUBLIC_SHOPIFY_IMGIX_URL);
+
+  return buildURL(src, adjustedImgixParams);
 }
