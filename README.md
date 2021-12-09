@@ -7,6 +7,8 @@ A comprehensive [Imgix](https://imgix.com/) image loader for the [Next.js Image 
 - Allows for native imgix image params/options
 - Similar error boundaries as `next/image`
 - Uses native `buildUrl` from `react-imgix`
+- Replaces image TLD's for other CDN's
+  - Shopify
 
 ### Usage
 
@@ -27,6 +29,24 @@ const Component = ({ image }) => {
     </>
   );
 };
+```
+
+### Options
+
+#### `shopify`
+
+This option transforms any passed url to the loader with `cdn.shopify.com` and replaces it the value of the `NEXT_PUBLIC_SHOPIFY_IMGIX_URL` environment variable. You can set this value in whatever local .env file in your project.
+
+Required: ❌
+
+Type: `boolean`
+
+Default: `false`
+
+Usage:
+
+```ts
+imgixLoader(props, { fit: "crop", ar: "1:1" }, { shopify: true });
 ```
 
 ### Required packages
