@@ -1,7 +1,7 @@
 import { ImageLoaderProps } from 'next/image';
-import { buildURL, SharedImigixAndSourceProps } from 'react-imgix';
+import { buildURL, SharedImgixAndSourceProps } from 'react-imgix';
 
-const defaultImgixParams: SharedImigixAndSourceProps['imgixParams'] = {
+const defaultImgixParams: SharedImgixAndSourceProps['imgixParams'] = {
   auto: 'format',
   fit: 'max',
 };
@@ -12,7 +12,7 @@ type Options = {
 
 export function imgixLoader(
   loaderProps: ImageLoaderProps,
-  imgixParams?: Omit<NonNullable<SharedImigixAndSourceProps['imgixParams']>, 'q' | 'w'>,
+  imgixParams?: Omit<NonNullable<SharedImgixAndSourceProps['imgixParams']>, 'q' | 'w'>,
   options?: Options,
 ): string {
   if (process.env.NODE_ENV !== 'production') {
@@ -37,7 +37,7 @@ export function imgixLoader(
       );
   }
 
-  let adjustedImgixParams: SharedImigixAndSourceProps['imgixParams'];
+  let adjustedImgixParams: SharedImgixAndSourceProps['imgixParams'];
 
   if (imgixParams) {
     adjustedImgixParams = {
