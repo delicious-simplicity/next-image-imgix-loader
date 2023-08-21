@@ -1,3 +1,5 @@
+[made with 💜 by [DS]](https://www.delicious-simplicity.com/)
+
 # @delicious-simplicity/next-image-imgix-loader
 
 A comprehensive [Imgix](https://imgix.com/) image loader for the [Next.js Image component](https://nextjs.org/docs/api-reference/next/image).
